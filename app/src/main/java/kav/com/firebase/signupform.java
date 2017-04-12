@@ -25,7 +25,7 @@ public class signupform extends AppCompatActivity {
     TextView t1,t2,t3,t4;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    public String loginName,loginPassword,loginPasswordReenter;
+    public String loginName,loginMail,loginPassword,loginPasswordReenter;
 
 
 
@@ -43,11 +43,6 @@ public class signupform extends AppCompatActivity {
         t2=(TextView)findViewById(R.id.textView6);
         t3=(TextView)findViewById(R.id.textView7);
         t4=(TextView)findViewById(R.id.textView8);
-
-        loginName = e1.getText().toString();
-        loginPassword= e3.getText().toString();
-        loginPasswordReenter=e4.getText().toString();
-
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -86,26 +81,30 @@ public class signupform extends AppCompatActivity {
 
     public void submit(View view) {
 
+        loginName = e1.getText().toString();
+        loginMail=e2.getText().toString();
+        loginPassword= e3.getText().toString();
+        loginPasswordReenter=e4.getText().toString();
 
-        if(loginName != loginPasswordReenter)
+        if(!loginPassword.equals(loginPasswordReenter))
         {
-           Toast.makeText(signupform.this,"Password did not Match!!",Toast.LENGTH_SHORT);
+           Toast.makeText(signupform.this,"Password did not Match!!",Toast.LENGTH_SHORT).show();
         }
 
         else {
-            mAuth.createUserWithEmailAndPassword(loginName, loginPassword)
+            mAuth.createUserWithEmailAndPassword(loginMail, loginPassword)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+                            Toast.makeText(signupform.this, "SignUp Successful!!",
+                                    Toast.LENGTH_SHORT).show();
 
                             // If sign in fails, display a message to the user. If sign in succeeds
                             // the auth state listener will be notified and logic to handle the
                             // signed in user can be handled in the listener.
                             if (!task.isSuccessful()) {
-                                Toast.makeText(signupform.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
-                            }
+                                                           }
 
                             // ...
                         }

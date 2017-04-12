@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "Login" ;
-    EditText loginName,loginPassword;
+    EditText loginEmail,loginPassword;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private FirebaseAuth mAuth;
 
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        loginName = (EditText) findViewById(R.id.editText);
+        loginEmail = (EditText) findViewById(R.id.editText);
         loginPassword = (EditText) findViewById(R.id.editText2);
         mAuth = FirebaseAuth.getInstance();
 
@@ -63,9 +63,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-
-        String name = loginName.getText().toString();
+        String name = loginEmail.getText().toString();
         String password = loginPassword.getText().toString();
+
         mAuth.signInWithEmailAndPassword(name, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void register(View view) {
+
         if (view instanceof  FancyButton)
         {
             if (((FancyButton)view).isExpanded()) {
