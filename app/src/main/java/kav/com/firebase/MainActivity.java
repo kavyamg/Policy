@@ -96,19 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void register(View view) {
 
-        if (view instanceof  FancyButton)
-        {
-            if (((FancyButton)view).isExpanded()) {
-                ((FancyButton) view).collapse();
-
-            }
-            else {
-                ((FancyButton) view).expand();
                 Intent intent = new Intent(MainActivity.this, signupform.class);
                 startActivity(intent);
-            }
-        }
-
 
     }
 }

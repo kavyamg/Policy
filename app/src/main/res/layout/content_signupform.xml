@@ -15,7 +15,7 @@
 
 
     <TextView
-        android:text="E :"
+        android:text="Email Id :"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView6"
@@ -89,20 +89,16 @@
         android:layout_marginBottom="12dp"
         android:layout_alignTop="@+id/editText6" />
 
-    <com.spark.submitbutton.SubmitButton
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <Button
+
         android:text="Submit"
         android:textColor="@color/black"
-        app:sub_btn_background="#d6d7d7"
-        app:sub_btn_duration="3000"
-        app:sub_btn_line_color="#d6d7d7"
-        app:sub_btn_ripple_color="@color/black"
-        app:sub_btn_tick_color="@color/white"
         android:layout_alignWithParentIfMissing="true"
         android:layout_marginBottom="50dp"
+        android:onClick="submit"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:onClick="submit"/>
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
 </RelativeLayout>
 

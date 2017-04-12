@@ -12,44 +12,39 @@
     tools:context="kav.com.firebase.MainActivity">
     xmlns:fnBtn="http://schemas.android.com/apk/res-auto"
 
-    <EditText
+
+    <TextView
+        android:text="New User?"
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="Name"
-        android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="18dp"
-        android:id="@+id/editText" />
+        android:id="@+id/textView2"
+        android:layout_marginEnd="23dp"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toStartOf="@+id/button2" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="Email Id"
+        android:ems="10"
+        android:layout_marginTop="34dp"
+        android:id="@+id/editText"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:hint="Password"
         android:ems="10"
+        android:layout_marginTop="36dp"
+        android:id="@+id/editText2"
         android:layout_below="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
-        android:layout_marginTop="46dp"
-        android:id="@+id/editText2" />
-
-
-    <com.ekalips.fancybuttonproj.FancyButton
-        android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        fnBtn:btnStyle="stroke_fill"
-        fnBtn:hideFillAfterCollapse="false"
-        fnBtn:fillColor="?attr/colorButtonNormal"
-        fnBtn:progressColor="@android:color/holo_blue_dark"
-        fnBtn:strokeColor="?attr/colorButtonNormal"
-        fnBtn:textColor="#000"
-        fnBtn:text="SIGNUP"
-        android:layout_marginBottom="55dp"
-        android:onClick="register"
-        android:layout_width="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="LOGIN"
@@ -57,7 +52,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/button"
         android:onClick="login"
-        android:layout_marginBottom="38dp"
-        android:layout_above="@+id/button2"
+        android:layout_centerVertical="true"
         android:layout_alignStart="@+id/button2" />
+
+    <Button
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:text="SIGNUP"
+        android:layout_marginBottom="25dp"
+        android:onClick="register"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

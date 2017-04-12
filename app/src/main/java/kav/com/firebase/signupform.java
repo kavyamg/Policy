@@ -1,4 +1,5 @@
 package kav.com.firebase;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -18,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import static android.R.attr.password;
+import static android.R.attr.text;
 
 public class signupform extends AppCompatActivity {
     private static final String TAG ="signup" ;
@@ -86,9 +88,23 @@ public class signupform extends AppCompatActivity {
         loginPassword= e3.getText().toString();
         loginPasswordReenter=e4.getText().toString();
 
-        if(!loginPassword.equals(loginPasswordReenter))
+        if(loginName.isEmpty())
         {
-           Toast.makeText(signupform.this,"Password did not Match!!",Toast.LENGTH_SHORT).show();
+            e1.setError("Cannot be Empty!!");
+        }
+        else if(loginMail.isEmpty())
+        {
+            e2.setError("Cannot be Empty!!");
+        }
+
+        else if(!loginPassword.equals(loginPasswordReenter))
+        {
+           e4.setError("Password did not Match!!");
+        }
+
+        else if(loginPassword.length()< 8)
+        {
+            e3.setError("Min 8 characters");
         }
 
         else {
@@ -99,18 +115,20 @@ public class signupform extends AppCompatActivity {
                             Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
                             Toast.makeText(signupform.this, "SignUp Successful!!",
                                     Toast.LENGTH_SHORT).show();
+                            Intent intent= new Intent(signupform.this,MainActivity.class);
+                            startActivity(intent);
 
                             // If sign in fails, display a message to the user. If sign in succeeds
                             // the auth state listener will be notified and logic to handle the
                             // signed in user can be handled in the listener.
                             if (!task.isSuccessful()) {
-                                                           }
-
-                            // ...
+                                Toast.makeText(signupform.this, "Signup Failed!!", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     });
         }
 
     }
+
 
 }
