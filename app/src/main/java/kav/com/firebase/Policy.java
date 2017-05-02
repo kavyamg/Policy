@@ -1,6 +1,8 @@
 package kav.com.firebase;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -12,9 +14,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+
+import java.util.Locale;
 
 public class Policy extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    Intent intent;
+    TextToSpeech t1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +31,17 @@ public class Policy extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        intent = new Intent(Policy.this,ManagePolicy.class);
+
+        t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onInit(int status) {
+                if(status != TextToSpeech.ERROR) {
+                    t1.setLanguage(Locale.US);
+                }
             }
         });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -97,5 +108,36 @@ public class Policy extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void life(View view) {
+        intent.putExtra("value",0);
+        startActivity(intent);
+        String toSpeak = "Life Insurance";
+        t1.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null);
+
+    }
+
+    public void car(View view) {
+        intent.putExtra("value",1);
+        startActivity(intent);
+        String toSpeak = "Vehicle Insurance";
+        t1.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
+
+    }
+
+    public void health(View view) {
+        intent.putExtra("value",2);
+        startActivity(intent);
+        String toSpeak = "Health Insurance";
+        t1.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
+
+    }
+
+    public void fixed(View view) {
+        intent.putExtra("value",1);
+        startActivity(intent);
+        String toSpeak = "Fixed Deposits";
+        t1.speak(toSpeak,TextToSpeech.QUEUE_FLUSH,null);
     }
 }

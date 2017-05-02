@@ -22,7 +22,8 @@
         <activity
             android:name=".Policy"
             android:label="@string/title_activity_policy"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ManagePolicy"></activity>
     </application>
 
 </manifest>

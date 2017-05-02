@@ -63,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        String name = loginEmail.getText().toString();
+        String mailid = loginEmail.getText().toString();
         String password = loginPassword.getText().toString();
 
-        mAuth.signInWithEmailAndPassword(name, password)
+        mAuth.signInWithEmailAndPassword(mailid, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
